@@ -1,0 +1,7 @@
+# memory-match-bd .gitignore
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+coverage/
+.nyc_output/

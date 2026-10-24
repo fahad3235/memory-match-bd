@@ -1,20 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Memory Match BD</title>
-<style>
-body{font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#0d1117;color:#e6edf3}
-main{text-align:center;padding:2rem}
-h1{font-size:2.5rem;margin-bottom:.5rem}
-p{color:#8b949e}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memory Match BD — bilingual EN/বাংলা card game</title>
+<meta name="description" content="A free bilingual memory card game: match English words with their Bangla meanings. Works fully offline.">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<main>
-<h1>Memory Match BD</h1>
-<p>A memory matching game. Coming soon.</p>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">🧠</span>
+    <div>
+      <h1>Memory Match <span class="bd">BD</span></h1>
+      <p id="tagline" class="tagline"></p>
+    </div>
+  </div>
+  <button id="lang-toggle" class="lang-toggle" type="button">বাং</button>
+</header>
+
+<main class="wrap">
+  <section class="controls" aria-label="game settings">
+    <div class="ctl">
+      <span id="level-label" class="ctl-label"></span>
+      <div class="seg" role="group" aria-label="level">
+        <button type="button" data-level="easy"></button>
+        <button type="button" data-level="medium"></button>
+        <button type="button" data-level="hard"></button>
+      </div>
+    </div>
+    <div class="ctl">
+      <span id="mode-label" class="ctl-label"></span>
+      <div class="seg" role="group" aria-label="deck">
+        <button type="button" data-mode="words" id="mode-words"></button>
+        <button type="button" data-mode="icons" id="mode-icons"></button>
+      </div>
+    </div>
+    <button id="new-game" class="btn primary" type="button"></button>
+  </section>
+
+  <section class="stats" aria-label="score">
+    <div class="stat"><span class="stat-label" id="label-moves"></span><strong id="stat-moves">0</strong></div>
+    <div class="stat"><span class="stat-label" id="label-time"></span><strong id="stat-time">0:00</strong></div>
+    <div class="stat"><span class="stat-label" id="label-matched"></span><strong id="stat-matched">0/0</strong></div>
+    <div class="stat"><span class="stat-label" id="label-best"></span><strong id="stat-best">—</strong></div>
+  </section>
+
+  <section id="board" class="board cols-4" aria-label="card board"></section>
+
+  <details class="howto">
+    <summary id="howto-title"></summary>
+    <p id="howto-text"></p>
+  </details>
 </main>
+
+<footer class="footer"><p id="footer"></p></footer>
+
+<div id="win-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="win-title">
+  <div class="modal-card">
+    <div class="stars" aria-hidden="true">🏆</div>
+    <h2 id="win-title"></h2>
+    <p id="win-sub" class="win-sub"></p>
+    <p id="win-note" class="win-note"></p>
+    <button id="play-again" class="btn primary" type="button"></button>
+  </div>
+</div>
+
+<script src="js/logic.js"></script>
+<script src="js/words.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
